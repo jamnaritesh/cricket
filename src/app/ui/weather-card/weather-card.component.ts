@@ -4,6 +4,7 @@ import {WeatherService} from '../../services/weather/weather.service';
 import {UiService} from '../../services/ui/ui.service';
 import {Subscription} from 'rxjs';
 import {first} from 'rxjs/operators';
+import { RequestHandlerService } from 'src/app/services/request-handler.service';
 // import {FbService} from '../../services/fb/fb.service';
 
 @Component({
@@ -61,6 +62,7 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
   cityAdded = false;
 
   constructor(public weather: WeatherService,
+              private service: RequestHandlerService,
               public router: Router,
               public ui: UiService) {
   }

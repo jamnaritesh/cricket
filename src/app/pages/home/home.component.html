@@ -1,3 +1,3 @@
 <div class="main__container">
-  <app-weather-card [city]="Paris"></app-weather-card>
+  <app-match-card  *ngFor=" let match of matchList | async" [match]="match"></app-match-card>
 </div>

@@ -42,7 +42,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
         this.city = route.params.city;
         switch (this.city.toLowerCase()) {
           case 'paris':
-            this.cityIllustrationPath = '../../../assets/cities/france.svg';
+            this.cityIllustrationPath = '../../../assets/france.png';
             break;
           case 'doha':
             this.cityIllustrationPath = '../../assets/cities/qatar.svg';

@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {WeatherCardComponent} from './ui/weather-card/weather-card.component';
 import {LoginComponent} from './pages/login/login.component';
 import {FormsModule} from '@angular/forms';
+import { MatchCardComponent } from './ui/match-card/match-card.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {FormsModule} from '@angular/forms';
     DetailsComponent,
     WeatherCardComponent,
     LoginComponent,
+    MatchCardComponent
   ],
   imports: [
     BrowserModule,
