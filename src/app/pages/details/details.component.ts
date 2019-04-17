@@ -4,6 +4,10 @@ import {WeatherService} from '../../services/weather/weather.service';
 import {forkJoin, Subscription} from 'rxjs';
 import {UiService} from '../../services/ui/ui.service';
 import {concatMap} from 'rxjs/operators';
+import { RequestHandlerService } from 'src/app/services/request-handler.service';
+import { Match } from 'src/app/models/match';
+import { MatDialog } from '@angular/material';
+import { BettingDialogComponent, DialogData } from 'src/app/ui/betting-dialog/betting-dialog.component';
 
 @Component({
   selector: 'app-details',
@@ -13,20 +17,17 @@ import {concatMap} from 'rxjs/operators';
 export class DetailsComponent implements OnInit, OnDestroy {
 
   darkMode: boolean;
-  city: string;
-  state: string;
-  temp: number;
-  hum: number;
-  wind: number;
-  today: string;
-  daysForecast: Object;
+  matchId: string;
   cityIllustrationPath: string;
   sub1: Subscription;
   sub2: Subscription;
-  errorMessage: string;
+  match: Match
 
 
-  constructor(public activeRouter: ActivatedRoute, public weather: WeatherService, public ui: UiService) {
+  constructor(public activeRouter: ActivatedRoute, 
+    public service: RequestHandlerService, 
+    public ui: UiService,
+    private dialog: MatDialog) {
 
   }
 
@@ -35,64 +36,42 @@ export class DetailsComponent implements OnInit, OnDestroy {
       this.darkMode = isDark;
     });
 
-    const todayNumberInWeek = new Date().getDay();
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    this.today = days[todayNumberInWeek];
-    this.sub2 = this.activeRouter.paramMap.pipe(concatMap((route: any) => {
-        this.city = route.params.city;
-        switch (this.city.toLowerCase()) {
-          case 'paris':
-            this.cityIllustrationPath = '../../../assets/france.png';
-            break;
-          case 'doha':
-            this.cityIllustrationPath = '../../assets/cities/qatar.svg';
-            break;
-          case 'tunis':
-            this.cityIllustrationPath = '../../assets/cities/tunis.svg';
-            break;
-          case 'tokyo':
-            this.cityIllustrationPath = '../../assets/cities/japan.svg';
-            break;
-          default:
-            this.cityIllustrationPath = '../../assets/cities/default.svg';
-        }
-        return forkJoin(this.weather.getWeather(this.city), this.weather.getForecast(this.city));
+    this.sub2 = this.activeRouter.paramMap
+    .pipe(
+      concatMap((route: any) => {
+        this.matchId = route.params.city;
+        return this.service.getMatch(this.matchId)
       })
-    ).subscribe((payload: any) => {
-      this.state = payload[0].weather[0].main;
-      this.temp = Math.ceil(Number(payload[0].main.temp));
-      this.hum = payload[0].main.humidity;
-      this.wind = Math.round(Math.round(payload[0].wind.speed));
-      const dates = {};
-      for (const res of payload[1]) {
-        const date = new Date(res.dt_txt).toDateString().split(' ')[0];
-        if (dates[date]) {
-          dates[date].counter += 1;
-          dates[date].temp += res.main.temp;
-        } else {
-          dates[date] = {
-            state: res.weather[0].main,
-            temp: res.main.temp,
-            counter: 1
-          };
-        }
-      }
-      Object.keys(dates).forEach((day) => {
-        dates[day].temp = Math.round(dates[day].temp / dates[day].counter);
-      });
-      delete dates[Object.keys(dates)[0]];
-      this.daysForecast = dates;
-    }, (err) => {
-      this.errorMessage = err.error.message;
-      setTimeout(() => {
-        this.errorMessage = '';
-      }, 2500);
-    });
-  }
+    )
+    .subscribe( match => {
+      this.match = match
+    })
+    }
+  
 
   ngOnDestroy() {
     this.sub1.unsubscribe();
     this.sub2.unsubscribe();
+  }
+
+  popup(team: string){
+    let teamId = this.match[team]
+    let teamName = team + 'Name'
+    teamName = this.match[teamName]
+    let matchId = this.match._id
+    console.log(teamId + " " + teamName + " "+ matchId)
+    this.dialog.open(
+      BettingDialogComponent, { 
+        data: <DialogData>{ 
+          teamId: teamId,
+          matchId: matchId,
+          teamName: teamName
+        },
+        width: '600px',
+        height: '400px'
+
+      }
+    )
   }
 
 }

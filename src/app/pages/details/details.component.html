@@ -49,48 +49,37 @@
     </svg>
       
     <section class="main-weather__card">
-            
+
+        <div class="middle-text">
+            <span>{{match.date | date:'mediumDate'}}</span><br>    
+            <h2>VS</h2>
+            <br>
+            <span>Match Starts at</span><br>
+            <span >{{match.date | date:'shortTime'}}</span>  
+        </div>
         <section class="card-header__container-dark" [ngSwitch]="true">
-                  <img class="city__illustration" src="./assets/default.svg"/>
+            <div class="match-info">
+                <span class="match-info" style=" font-size: 30px; margin-top: 0px; text-transform: capitalize; ">Predict the match winner</span><br>
+                 
+            </div>
+            <img class="city__illustration" src="./assets/default.svg"/>
                   
             <div class="header-content__wrapper">
                         
                 <div class="today-weather__container">
-                              
-                    <!--{{today}}-->
-                              
-                    <div class="temp-state__container">
-                                    <span class="temperature__text">{{temp}}°</span>
-                                    <span class="weather-state__text">{{state}}</span>
-                                  
+                    <div class="team-1-details">
+                        <h2>{{match.team1Name}}</h2>
+                        <img src="./assets/{{match.team1Name}}.png" alt="">  
+                        <button (click)="popup('team1')" class="btn btn-5">Select your team</button>        
                     </div>
-                              
-                    <div class="hum-wind__container">
-                                    
-                        <div class="hum__container">
-                                          <span class="hum__text">humidity</span>
-                                          <span class="hum-value__text">{{hum}} %</span>
-                                        
-                        </div>
-                                    <div class="hum-wind__separator">&nbsp;</div>
-                                    
-                        <div class="wind__container">
-                                          <span class="wind__text">wind</span>
-                                          <span class="wind-value__text">{{wind}} K/M</span>
-                                        
-                        </div>
-                                  
-                    </div>
-                            
                 </div>
-                        
+                
                 <div class="city-name__container">
-                              
-                    <div class="city-name__underline">
-                                    <span class="city-name__text">{{city}}</span>
-                                  
-                    </div>
-                            
+                    <div class="team-2-details">
+                        <h2>{{match.team2Name}}</h2>
+                        <img src="./assets/{{match.team2Name}}.png" alt="">  
+                        <button (click)="popup('team2')" class="btn btn-5">Select your team</button>        
+                    </div>                          
                 </div>
                       
             </div>

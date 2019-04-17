@@ -14,6 +14,51 @@
   background: linear-gradient(#FC7DB8, #495CFC);
 }
 
+.team-1-details, .team-2-details{
+  width: 100%;
+}
+
+.btn {
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  border:none;
+  padding: 14px 30px;
+  margin: 0 auto;
+    display: block;
+ }
+
+/* Demo Stuff End -> */
+
+/* <- Magic Stuff Start */
+
+.btn-5 {
+  background-image: linear-gradient(to right, #f9f9f9 0%, #fbff00 51%, #ebedf1 100%);
+  color: black;
+}
+.btn:hover {
+  background-position: right center; /* change the direction of the change here */
+}
+.main-weather__card img{
+  position: relative;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+h2{
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+  font-family: SegoeUI, Segoe UI, sans-serif;
+}
+
 .background-gradient__circle {
   position: absolute;
   top: 50%;
@@ -68,13 +113,15 @@
   position: relative;
   object-fit: cover;
   display: block;
+  background-color: #013A6B;
+  background-image: -webkit-linear-gradient(150deg, #013A6B 35%, #004E95 35%);
 }
 
 .header-content__wrapper {
   position: absolute;
   z-index: 2;
   color: white;
-  top: 3rem;
+  top: 6rem;
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: repeat(2, 1fr);
@@ -263,6 +310,32 @@
     height: 80%;
     width: 75%;
   }
+}
+div.match-info{
+  position: ABSOLUTE;
+    top: 15px;
+    z-index: 9999;
+    width: 100%;
+    margin: auto;
+    color: white;
+    text-align: center;
+}
+.middle-text h2{
+  font-size: 42px;
+}
+.middle-text span{
+  text-align: center;
+  position: absolute;
+  width: 100%;
+}
+.middle-text {
+  position: absolute;
+  z-index: 99999;
+  width: 100%;
+  margin: auto;
+  color: white;
+  top: 30%;
+  /* margin: auto; */
 }
 
 /* Media Query:   LT-LG  */

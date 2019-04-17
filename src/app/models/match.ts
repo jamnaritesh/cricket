@@ -1,4 +1,3 @@
-import { MatchScoreCard } from './matchScorecard';
 
 export interface Match{
     _id: string
@@ -11,5 +10,4 @@ export interface Match{
     date: Date;
     won: string;
     live: boolean;
-    matchScorecard: MatchScoreCard
 }

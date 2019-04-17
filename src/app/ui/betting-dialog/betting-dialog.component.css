@@ -1,0 +1,56 @@
+.bg{
+    background-color: #013A6B;
+    background-image: -webkit-linear-gradient(150deg, #013A6B 35%, #004E95 35%);
+    min-height: 200px;
+  }
+
+  .upper-image {
+    height: 150px;
+    text-align: center;
+    background-color: #013A6B;
+    background-image: -webkit-linear-gradient(30deg, #013A6B 50%, #004E95 50%);
+    overflow: hidden;
+}
+.mat-dialog-content {
+  padding: 0;
+}
+.bet-form{
+  overflow: hidden;
+  margin: 20px 30px;
+  padding: 0 40px;
+}
+.close{
+  position: absolute;
+  color: red;
+  font-size: 28px;
+  margin-left: 575px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+img.coin {
+  height: 23px;
+  width: 23px;
+}
+
+#confirm-button{
+  height: 55px;
+  background-color: #2fe88a;
+  color: white;
+  font-weight: 600;
+  width: 75%;
+  margin: 0 auto;
+}
+.small-text{
+  font-size: 12px;
+  position: relative;
+  top: -15px;
+}
+mat-form-field{
+  width:100%;
+}
+
+
+::ng-deep .mat-dialog-container{
+  padding: 0;
+  overflow: hidden;
+}
