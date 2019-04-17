@@ -1,8 +1,8 @@
-import { Players } from './player';
 
 export interface Team {
     _id: string
-    players: Players
+    teamName: string
+    players: string[]
     played: number;
     won: number;
     lost: number;

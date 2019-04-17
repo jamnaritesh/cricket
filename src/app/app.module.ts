@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import { MatchCardComponent } from './ui/match-card/match-card.component';
 import { BettingDialogComponent } from './ui/betting-dialog/betting-dialog.component';
 import { AppMaterialModule } from './material.module';
+import { TeamCardComponent } from './ui/team-card/team-card.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AppMaterialModule } from './material.module';
     LoginComponent,
     MatchCardComponent,
     BettingDialogComponent,
+    TeamCardComponent
   ],
   imports: [
     BrowserModule,

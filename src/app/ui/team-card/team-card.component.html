@@ -1,0 +1,32 @@
+<!-- <div class="team-stats">
+    <div class="stat-box">
+         <div class="won">W: <span class="number">{{ team.won }}</span></div>
+        <div class="draw">D: <span class="number">{{ team.draw }}</span></div>
+        <div class="lost">L: <span class="number">{{ team.lost }}</span></div>
+    </div>
+</div> -->
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <img src="./assets/{{team.teamName}}.png" alt="" style="height:30px; width:auto">
+                <span style="margin-top:5px;margin-left: 10px;">Lineup</span>
+                
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+    
+    <div class="team-info">
+            <div class="player-list">
+                <li *ngFor=" let player of team.players">
+                    <img src="./assets/default-player-image.png">
+                    <div class="player-data">
+                        <span class="player-name">{{ player }}</span><br>
+                        <span class="team-name">{{ team.teamName }} | Player </span>
+                    </div>
+                        
+                </li>
+            </div>
+    </div>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -214,7 +214,7 @@ h2{
 
 .body-content__wrapper {
   display: grid;
-  grid-template-columns: 1fr 1.75fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   justify-items: center;
   justify-content: center;
@@ -379,4 +379,3 @@ div.match-info{
   }
 
 }
-

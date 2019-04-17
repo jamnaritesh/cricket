@@ -1,0 +1,52 @@
+.team-info li {
+    height: 50px;
+    list-style: none;
+    border: 1px solid #ccc;
+    border-bottom: 0px;
+    /* margin: 1px; */
+    padding: 5px;
+    display: flex;
+}
+
+.team-info li img {
+    width: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    background-color: #3c37929c;
+}
+span.player-name{
+    color: #3a91d4;
+    font-size: 16px;
+    margin-top: 22px;
+    margin-left: 15px;
+}
+li:last-child {
+    border-bottom: 1px solid #ccc !important;
+}
+
+span.team-name {
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.stat-box {
+   
+    display: flex;
+        width: 60%;
+        margin: 0 auto;
+    }
+    
+    .stat-box div {
+        margin-right: 15px;
+        font-size:18px;
+    font-weight:800;
+    }
+    
+    .won{
+    color:green;
+    }
+    .lost{
+    color:red;}
+    .draw{
+    color: black}
