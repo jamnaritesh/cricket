@@ -27,6 +27,18 @@
   margin-top: 5px;
   cursor: pointer;
 }
+#confirm-button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+  box-shadow: 4px 4px 1px #807575;
+}
+span.error {
+  color: red;
+  font-size: 13px;
+  position: relative;
+  top: -20px;
+}
+
 img.coin {
   height: 23px;
   width: 23px;

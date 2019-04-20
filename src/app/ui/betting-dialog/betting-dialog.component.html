@@ -1,20 +1,26 @@
 
   <span class="close" (click)="onNoClick()">X</span>
-  <div mat-dialog-content>
-  <div class="upper-image">
-      <img src="./assets/{{data.teamName}}.png" alt="">
-  </div>
-  <div class="bet-form">
-    <span>Enter Coin Amount</span><br><br>
-    <mat-form-field>
-        <input matInput [(ngModel)]="qty" placeholder="Coins" type="number" max="100">
-        <span matSuffix><img class ="coin" src="./assets/coin.png"></span>
-    </mat-form-field>
-  </div>
-  
-</div>
+<form (ngSubmit)="submit()" #betform="ngForm">
+    <div mat-dialog-content>
+      <div class="upper-image">
+          <img src="./assets/{{data.teamName}}.png" alt="">
+      </div>
+      
+      <div class="bet-form">
+        <span>Enter Coin Amount</span><br><br>
+        <mat-form-field>
+            <input required matInput [(ngModel)]="qty" name="qty" placeholder="Coins" type="number" [min]="1" [max]="100"> 
+            <!-- TODO: take max from login service -->
+            <span matSuffix><img class ="coin" src="./assets/coin.png"></span>
+        </mat-form-field>
+        <span class="error" *ngIf="!betform.form.pristine && qty > 100"> Qty cant be greater than max amount</span>
+        <span class="error" *ngIf="!betform.form.pristine && qty <= 1"> Qty cant be smaller than 1</span>
+      </div>
+    
+    </div>
 
-<div mat-dialog-actions>
-  <button id="confirm-button" mat-raised-button >Confirm Selection<img src="./assets/ball.png" style="height: 20px;margin-left: 15px;">
-  <br><span class="small-text">You can't change your production once confirmed.</span></button>
-</div>
+    <div mat-dialog-actions>
+      <button id="confirm-button" [disabled]="!(qty <= 100 && qty >= 1)" mat-raised-button  type="submit">Confirm Selection<img src="./assets/ball.png" style="height: 20px;margin-left: 15px;">
+      <br><span class="small-text">You can't change your production once confirmed.</span></button>
+    </div>
+</form>

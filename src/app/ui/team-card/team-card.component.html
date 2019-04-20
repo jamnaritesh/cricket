@@ -5,7 +5,7 @@
         <div class="lost">L: <span class="number">{{ team.lost }}</span></div>
     </div>
 </div> -->
-<mat-accordion>
+<mat-accordion *ngIf="team">
     <mat-expansion-panel (opened)="panelOpenState = true"
     (closed)="panelOpenState = false">
         <mat-expansion-panel-header>

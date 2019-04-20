@@ -39,7 +39,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.sub2 = this.activeRouter.paramMap
     .pipe(
       concatMap((route: any) => {
-        this.matchId = route.params.city;
+        this.matchId = route.params.matchId;
         return this.service.getMatch(this.matchId)
       })
     )
@@ -65,7 +65,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
         data: <DialogData>{ 
           teamId: teamId,
           matchId: matchId,
-          teamName: teamName
+          teamName: teamName,
+          teamNumber: team
         },
         width: '600px',
         height: '400px'

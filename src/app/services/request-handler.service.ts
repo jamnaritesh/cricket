@@ -2,86 +2,41 @@ import { Injectable } from '@angular/core';
 import { Match } from '../models/match';
 import { Observable, of } from 'rxjs';
 import { Team } from '../models/team';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../models/User';
+import { MatchBet } from '../models/matchbet';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestHandlerService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   getMatchList(): Observable<Match[]> {
-    return of(
-      [
-        { _id: "a",
-          team1Name: "csk",
-          team2Name: "rcb",
-          team1: "t1",
-          team2: "t2",
-          team1Bets: 0,
-          team2Bets:0 ,
-          date: new Date(),
-          won: "",
-          live: true,
-        },
-        { _id: "b",
-          team1Name: "something else",
-          team2Name: "nothing else",
-          team1: "t1",
-          team2: "t2",
-          team1Bets: 5,
-          team2Bets:3 ,
-          date: new Date(),
-          won: "",
-          live: false,
-         
-        },
-        { _id: "c",
-          team1Name: "something else",
-          team2Name: "nothing else",
-          team1: "t1",
-          team2: "t2",
-          team1Bets: 5,
-          team2Bets:3 ,
-          date: new Date(),
-          won: "",
-          live: false,
-
-        }
-      ]
-      
-    )
-
+    return this.httpClient.get<Match[]>("http://localhost:1234/matches/getMatches")
   }
 
   getMatch(match: string): Observable<Match> {
-    return of(
-        { _id: "a",
-          team1Name: "csk",
-          team2Name: "rcb",
-          team1: "t1",
-          team2: "t2",
-          team1Bets: 0,
-          team2Bets:0 ,
-          date: new Date(),
-          won: "",
-          live: true,
-        }
-    )
+    return this.httpClient.get<Match>("http://localhost:1234/matches/" + match)
   }
 
   getTeam(teamId: string): Observable<Team> {
-    return of(
-        {  _id: "abc",
-          players:[
-            "Raju", "Ankush", "Neeraj", "Shailesh", "Ritesh ( C )"
-          ],
-          teamName:"rcb",
-          played: 5,
-          won: 4,
-          lost: 0,
-          draw: 1
-        }
-    )
+    return this.httpClient.get<Team>("http://localhost:1234/teams/" + teamId)
+  }
+
+  placeBet(matchBet: MatchBet){
+    return this.httpClient.post<MatchBet>("http://localhost:1234/bets/create", matchBet)
+  }
+
+  updateMatchBetCount(matchId: string, payload: any){
+    return this.httpClient.put<String>("http://localhost:1234/matches/"+matchId+"/updateBetCount", payload)
+  }
+
+  login(username: string, password: string){
+    return this.httpClient.post<User>("http://localhost:1234/teams/", {
+      username: username,
+      password: password
+    })
   }
 }

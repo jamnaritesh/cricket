@@ -12,7 +12,7 @@
         </div>
         
         <div  class="max__container" style="margin: 0;">
-            <span style="text-align: center;" class="city-name__text">{{this.match.team2Name}}</span>                
+            <span style="text-align: center;" class="city-name__text">{{this.match.team2Name }}</span>                
             <img src="./assets/{{this.match.team2Name}}.png" alt="" class="img-responsive" style="width: 110px;
             margin: 0 auto;"> 
         </div>
@@ -32,7 +32,7 @@
                       <path fill="#00ff9b" d="M209.5 817.5h-21L199 828z" data-name="Min Arrow"/>      
           </svg>
           
-                <span class="min-temperature__text">{{ ( this.match.team1Bets / (this.match.team1Bets + this.match.team2Bets)) * 100 }}</span>
+                <span class="min-temperature__text">{{ (( this.match.team1Bets / (this.match.team1Bets + this.match.team2Bets)) * 100) | number:'.2-2'  }}</span>
                 <span class="min__text">Min</span>
               
       </div>
@@ -42,7 +42,7 @@
           <svg class="max-arrow__icon" viewBox="449.5 820 21 21">
                       <path fill="red" d="M449.5 830.5h21L460 820z" data-name="Max Arrow"/>      
           </svg>
-                <span class="max-temperature__text">{{ ( this.match.team2Bets / (this.match.team1Bets + this.match.team2Bets)) * 100 }}</span>
+                <span class="max-temperature__text">{{ (( this.match.team2Bets / (this.match.team1Bets + this.match.team2Bets)) * 100)  | number:'.2-2' }}</span>
                 <span class="max__text">Max</span>
               
       </div>
